@@ -5,19 +5,34 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.cross_validation import train_test_split
 from sklearn.metrics import accuracy_score
 
-# visulaize the important characteristics of the dataset
+# visualize the important characteristics of the dataset
 import matplotlib.pyplot as plt
 
 
 def preprocess(filename):
     """
 
-    :return:
+    :return: Test and train splits after processing
     """
-    # step 1: Load the data
-    dataframe_all=pd.read_pickle(filename)
+    # step 1: Load the data and include column headers
+    dataframe_all = pd.read_csv('bcw.txt', sep=",", header=None)
+    dataframe_all.columns = ["ID", "CT", "cell_size", "cell_shape", "MA", "ECS", "bare_nuclei", "BC", "normal_nuclei",
+                             "Mitoses", "CLASS"]
+
     num_rows = dataframe_all.shape[0]
-    print(dataframe_all.columns)
+
+    # Total number of matches.
+    n_matches = dataframe_all.shape[0]
+
+    # Calculate number of features. -1 because we are saving one as the target variable (Benign or malignant)
+    n_features = dataframe_all.shape[1] - 1
+
+    # Print the results
+    print("Total number of cases: {}".format(num_rows))
+    print("Number of features: {}".format(n_features))
+
+    columns = dataframe_all.columns
+    print(columns)
 
     # step 2: remove useless data
     # count the number of missing elements (NaN) in each column
@@ -25,8 +40,10 @@ def preprocess(filename):
     counter_without_nan = counter_nan[counter_nan==0]
     # remove the columns with missing elements
     dataframe_all = dataframe_all[counter_without_nan.keys()]
-    # remove the first 7 columns which contain no discriminative information
-    dataframe_all = dataframe_all.ix[:,7:]
+    # remove the first column which contains no discriminative information (Sample IDs)
+    dataframe_all = dataframe_all.drop(dataframe_all.columns[[0]], axis=1)
+    # Modify CLASS labels from 2,4 to 0,1
+    dataframe_all["CLASS"] = dataframe_all["CLASS"].apply(lambda x: x / 2 - 1)
     # the list of columns (the last column is the class label)
     columns = dataframe_all.columns
     print(columns)
@@ -49,19 +66,14 @@ def preprocess(filename):
     test_percentage = 0.1
     x_train, x_test, y_train, y_test = train_test_split(x_std, y, test_size = test_percentage, random_state = 0)
 
-    # t-distributed Stochastic Neighbor Embedding (t-SNE) visualization
-    from sklearn.manifold import TSNE
-    tsne = TSNE(n_components=2, random_state=0)
-    x_test_2d = tsne.fit_transform(x_test)
+    return x_train, x_test, y_train, y_test,dataframe_all
 
-    # scatter plot the sample points among 5 classes
-    markers=('s', 'd', 'o', '^', 'v')
-    color_map = {0:'red', 1:'blue', 2:'lightgreen', 3:'purple', 4:'cyan'}
-    plt.figure()
-    for idx, cl in enumerate(np.unique(y_test)):
-        plt.scatter(x=x_test_2d[y_test==cl,0], y=x_test_2d[y_test==cl,1], c=color_map[idx], marker=markers[idx], label=cl)
-    plt.xlabel('X in t-SNE')
-    plt.ylabel('Y in t-SNE')
-    plt.legend(loc='upper left')
-    plt.title('t-SNE visualization of test data')
-    plt.show()
+def pca(dataframe):
+    from sklearn.decomposition import PCA
+    df=dataframe
+
+    df = df.drop('CLASS', 1)
+    pca = PCA(n_components=3)
+    pca.fit(df)
+    result = pd.DataFrame(pca.transform(df), columns=['PCA%i' % i for i in range(3)], index=df.index)
+    return result
