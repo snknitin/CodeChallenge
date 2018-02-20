@@ -1,5 +1,8 @@
 # CodeChallenge
-Any dataset
+
+
+
+## Decide on a dataset
 
 
     For predicting continuous data : California Housing
@@ -30,13 +33,12 @@ ID  Attribute                     Domain
 
 
 
-## Decide on a dataset
 
 
-- Description and field of interest in this corpus
+## Description and field of interest in this corpus
 
- Field of interest for classification model is CLASS
- Field of interest for regression model is median_house_value
+- Field of interest for classification model is CLASS
+- Field of interest for regression model is median_house_value
 
 
 
