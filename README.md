@@ -35,17 +35,15 @@ ID  Attribute                     Domain
 
 - Description and field of interest in this corpus
 
- # Field of interest for classification model is CLASS
- # Field of interest for regression model is median_house_value
+ Field of interest for classification model is CLASS
+ Field of interest for regression model is median_house_value
 
 
 
 
 ## Preprocessing
 
-    Attribute with few missing values was removed in the cancer dataset and imputed with the median in the housing data. I used pandas for data preprocessing
-
-
+Attribute with few missing values was removed in the cancer dataset and imputed with the median in the housing data. I used pandas for data preprocessing
 
 
 ## Visualization
@@ -58,7 +56,6 @@ ID  Attribute                     Domain
 - In addition to that, you can view the iPython notebooks Classification.ipynb and Regression.ipynb to see all the plots the code being executed step wise for processing the data
 
 - Images are stored in static folder for each project
-
 
 
 ## ML Algorithm
