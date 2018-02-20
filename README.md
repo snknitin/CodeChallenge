@@ -15,6 +15,10 @@ Unlike most datasets relating to cancer this one has a good distribution.
 Benign: 458 (65.5%)
 Malignant: 241 (34.5%)
 
+
+## Description and field of interest in this corpus
+
+- Field of interest for classification model is CLASS
 Attribute Information: (class attribute has been moved to last column)
 
 ID  Attribute                     Domain
@@ -31,15 +35,20 @@ ID  Attribute                     Domain
 10. Mitoses                       1 - 10
 11. Class:                        (2 for benign, 4 for malignant)
 
-
-
-
-
-## Description and field of interest in this corpus
-
-- Field of interest for classification model is CLASS
 - Field of interest for regression model is median_house_value
 
+Data columns (total 10 columns):
+    longitude             20640 non-null float64
+    latitude              20640 non-null float64
+    housing_median_age    20640 non-null float64
+    total_rooms           20640 non-null float64
+    total_bedrooms        20433 non-null float64
+    population            20640 non-null float64
+    households            20640 non-null float64
+    median_income         20640 non-null float64
+    median_house_value    20640 non-null float64
+    ocean_proximity       20640 non-null object
+    dtypes: float64(9), object(1)
 
 
 
