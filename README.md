@@ -64,7 +64,7 @@ Attribute Information: (class attribute has been moved to last column)
 
 ## Preprocessing
 
-Attribute with few missing values was removed in the cancer dataset and imputed with the median in the housing data. I used pandas for data preprocessing
+Attribute with few missing values was removed in the cancer dataset and imputed with the median in the housing data. I used pandas for data preprocessing. Details are clearer in the iPython Notebooks
 
 
 ## Visualization
