@@ -2,37 +2,31 @@
 Any dataset
 
 
-For predicting continuous data : California Housing
+    For predicting continuous data : California Housing
+This is one of the first introductory data sets I've used to learn regression.
 
-    This is one of the first introductory data sets I've used to learn regression.
+    For predicting discrete data : Breast Cancer Winsconsin
 
+Unlike most datasets relating to cancer this one has a good distribution.
 
+Benign: 458 (65.5%)
+Malignant: 241 (34.5%)
 
+Attribute Information: (class attribute has been moved to last column)
 
-
-
-For predicting discrete data : Breast Cancer Winsconsin
-
-   Unlike most datasets relating to cancer this one has a good distribution.
-
-   Benign: 458 (65.5%)
-   Malignant: 241 (34.5%)
-
-    Attribute Information: (class attribute has been moved to last column)
-
-   ID  Attribute                     Domain
-   -- -----------------------------------------
-   1. Sample code number            id number
-   2. Clump Thickness               1 - 10
-   3. Uniformity of Cell Size       1 - 10
-   4. Uniformity of Cell Shape      1 - 10
-   5. Marginal Adhesion             1 - 10
-   6. Single Epithelial Cell Size   1 - 10
-   7. Bare Nuclei                   1 - 10
-   8. Bland Chromatin               1 - 10
-   9. Normal Nucleoli               1 - 10
-  10. Mitoses                       1 - 10
-  11. Class:                        (2 for benign, 4 for malignant)
+ID  Attribute                     Domain
+-- -----------------------------------------
+1. Sample code number            id number
+2. Clump Thickness               1 - 10
+3. Uniformity of Cell Size       1 - 10
+4. Uniformity of Cell Shape      1 - 10
+5. Marginal Adhesion             1 - 10
+6. Single Epithelial Cell Size   1 - 10
+7. Bare Nuclei                   1 - 10
+8. Bland Chromatin               1 - 10
+9. Normal Nucleoli               1 - 10
+10. Mitoses                       1 - 10
+11. Class:                        (2 for benign, 4 for malignant)
 
 
 
@@ -49,7 +43,7 @@ For predicting discrete data : Breast Cancer Winsconsin
 
 ## Preprocessing
 
-    Attribute with few missing values was removed in the cancer dataset and imputed with the median in the housing data
+    Attribute with few missing values was removed in the cancer dataset and imputed with the median in the housing data. I used pandas for data preprocessing
 
 
 
@@ -63,6 +57,7 @@ For predicting discrete data : Breast Cancer Winsconsin
 
 - In addition to that, you can view the iPython notebooks Classification.ipynb and Regression.ipynb to see all the plots the code being executed step wise for processing the data
 
+- Images are stored in static folder for each project
 
 
 
